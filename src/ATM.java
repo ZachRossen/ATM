@@ -27,18 +27,22 @@ public class ATM {
 	}
 	
 	public boolean depositMoney(int id, double money) {
-		if (bank.containsKey(id)) {
-			bank.put(id, bank.get(id)+money);
-			return true;
+		if (money>=0) {
+			if (bank.containsKey(id)) {
+				bank.put(id, bank.get(id)+money);
+				return true;
+			}
 		}
 		return false;
 	}
 	
 	public boolean withdrawMoney(int id, double money) {
-		if (bank.containsKey(id)) {
-			if (bank.get(id)>=money) {
-				bank.put(id, bank.get(id)-money);
-				return true;
+		if (money>=0) {
+			if (bank.containsKey(id)) {
+				if (bank.get(id)>=money) {
+					bank.put(id, bank.get(id)-money);
+					return true;
+				}
 			}
 		}
 		return false;
